@@ -14,19 +14,19 @@ data = [
 ]
 
 while True:
-    try:
-        theta_str = input('Input Theta(deg):')
-        cos_theta = cos(math.radians(float(theta_str)))
-        print('cos(theta)=' + str(cos_theta))
-    except Exception as e:
-        print("Error reading theta value, input was: " + theta_str)
-        print(e)
-        exit(-1)
-        
     x, y = symbols('x y', nonnegative=True)
     equations = []
 
     for i in [0,1]:
+        try:
+            theta_str = input('Input Theta {}(deg):'.format(i+1))
+            cos_theta = cos(math.radians(float(theta_str)))
+            print('cos(theta)=' + str(round(cos_theta, 6)))
+        except Exception as e:
+            print("Error reading theta value, input was: " + theta_str)
+            print(e)
+            exit(-1)
+            
         a = data[i]['a']
         b = data[i]['b']
         A = (a+b) * (cos_theta + 1)
