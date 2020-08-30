@@ -19,13 +19,17 @@ while True:
 
     for i in [0,1]:
         try:
-            theta_str = input('Input Theta {}(deg):'.format(i+1))
+            theta_str = input('Input {}{}(deg):'.format(u"\u03F4", i+1))
             cos_theta = cos(math.radians(float(theta_str)))
             print('cos(theta)=' + str(round(cos_theta, 6)))
         except Exception as e:
             print("Error reading theta value, input was: " + theta_str)
             print(e)
             exit(-1)
+        except KeyboardInterrupt:
+            print('')
+            print('Ctrl-C detected, exiting')
+            exit(0)
             
         a = data[i]['a']
         b = data[i]['b']
